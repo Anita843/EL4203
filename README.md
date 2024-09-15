@@ -47,3 +47,6 @@ Donde:
 - rec y it contienen el número de caminos
 - tiempo_rec y tiempo_it contienen el tiempo de ejecución de cada método
 
+### Comentario sobre el gráfico
+
+Se logra observar que el método recursivo es mucho más lento que el iterativo para N demasiado grandes, presentando un comportamiento exponencial. Por otro lado, el método iterativo tiene una baja complejidad y por consecuente un tiempo de ejecución constante.
