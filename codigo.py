@@ -3,7 +3,7 @@ from time import perf_counter
 import numpy as np
 import matplotlib.pyplot as plt
 
-# definicion de la clase
+# definicion de la clase pedida
 class Caminos:
     def __init__(self,n,m):
         self.n = n #ancho grilla
