@@ -23,32 +23,32 @@ class Caminos:
         return tiempo_total
     
     # metodo generalizado para calcular el tiempo con un decorador
-    def medir_tiempo(func):
+    def medir_tiempo(func): 
         def decorador(*args, **kwargs): # permite que pueda aplicarse a cualquier función
             inicio = perf_counter()
             resultado = func(*args, **kwargs)
             tiempo_total = perf_counter() - inicio
-            return resultado, tiempo_total
+            return resultado, tiempo_total # devuelve la cantidad de caminos y el tiempo de ejecución
         return decorador        
     
     
     def cantidad_caminos(self,x=0,y=0): # metodo recursivo
-        if x == self.n-1 and y==self.m-1: #caso base
+        if x == self.n-1 and y==self.m-1: # caso base
             return 1
-        if x>=self.n or y>=self.m: #termino de sumar
+        if x>=self.n or y>=self.m: # no hay mas caminos, se sale de la grilla
             return 0
         # si se elige hacia la derecha o hacia abajo
         return self.cantidad_caminos(x+1,y)+self.cantidad_caminos(x,y+1)
 
     def cantidad_caminos_2(self): # metodo iterativo
         fila = [1] * self.m # representa la primera fila de la grilla
-        for i in range(1, self.n):
-            for j in range(1, self.m):
-                fila[j] += fila[j - 1]
+        for i in range(1, self.n): # recorre cada fila
+            for j in range(1, self.m): # recorre cada celda
+                fila[j] += fila[j - 1] # actualiza el número de caminos posibles para cada celda
         return fila[self.m - 1]
 
     @medir_tiempo
-    # se aplica el decorador
+    # se aplica el decorador a una nueva funcion donde se pueden aplicar ambos metodos
     def calcular_caminos(self, metodo):
         if metodo == 'recursivo':
             resultado = self.cantidad_caminos()
@@ -92,4 +92,6 @@ def generar_grafico(N):
     plt.show()
 
 # generamos el gráfico hasta N=16
-generar_grafico(16)
+# comenté el generar_grafico(16) que cree porque se demora lo suyo (en mi pc al menos)
+# descomentar si se quiere crear nuevamente el grafico
+# generar_grafico(16)
